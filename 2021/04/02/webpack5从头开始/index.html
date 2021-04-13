@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/jekyll_demo.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/jekyll_demo.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/jekyll_demo.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/jekyll_demo.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/jekyll_demo.io/css/main.css">
+
+
+<link rel="stylesheet" href="/jekyll_demo.io/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"linz-cc.github.io","root":"/jekyll_demo.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="¶webpcak安装  先使用npm init -y初始化文件 然后安装本地的webpack npm install webpack webpack-cli -D  ¶webpack可以进行0配置  打包工具 -&gt; 输出后的结果(js模块) 使用npx webpack指令进行打包，默认调用mode_modules模块下的.&#x2F;bin&#x2F;webpack.cmd, 而webpack.cmd会运行no">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack5从头开始">
+<meta property="og:url" content="https://linz-cc.github.io/jekyll_demo.io/2021/04/02/webpack5%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B/index.html">
+<meta property="og:site_name" content="阿光的小店">
+<meta property="og:description" content="¶webpcak安装  先使用npm init -y初始化文件 然后安装本地的webpack npm install webpack webpack-cli -D  ¶webpack可以进行0配置  打包工具 -&gt; 输出后的结果(js模块) 使用npx webpack指令进行打包，默认调用mode_modules模块下的.&#x2F;bin&#x2F;webpack.cmd, 而webpack.cmd会运行no">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-02T03:05:43.000Z">
+<meta property="article:modified_time" content="2021-04-07T06:15:13.004Z">
+<meta property="article:author" content="阿光">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://linz-cc.github.io/jekyll_demo.io/2021/04/02/webpack5%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>webpack5从头开始 | 阿光的小店</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/jekyll_demo.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">阿光的小店</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/jekyll_demo.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/jekyll_demo.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://linz-cc.github.io/jekyll_demo.io/2021/04/02/webpack5%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/jekyll_demo.io/images/ag_avatar.jpg">
+      <meta itemprop="name" content="阿光">
+      <meta itemprop="description" content="选择有时候比努力更重要">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿光的小店">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          webpack5从头开始
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-02 11:05:43" itemprop="dateCreated datePublished" datetime="2021-04-02T11:05:43+08:00">2021-04-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-07 14:15:13" itemprop="dateModified" datetime="2021-04-07T14:15:13+08:00">2021-04-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="webpcak安装"><a class="header-anchor" href="#webpcak安装">¶</a>webpcak安装</h2>
+<ul>
+<li>先使用<code>npm init -y</code>初始化文件</li>
+<li>然后安装本地的webpack<br>
+<code>npm install webpack webpack-cli -D</code></li>
+</ul>
+<h2 id="webpack可以进行0配置"><a class="header-anchor" href="#webpack可以进行0配置">¶</a>webpack可以进行0配置</h2>
+<ul>
+<li>打包工具 -&gt; 输出后的结果(js模块)</li>
+<li>使用<code>npx webpack</code>指令进行打包，默认调用<code>mode_modules</code>模块下的<code>./bin/webpack.cmd</code>,<br>
+而<code>webpack.cmd</code>会运行<code>node_modules/webpack/bin/webpack.js</code></li>
+<li>打包(支持我们的js的模块化)</li>
+</ul>
+<h2 id="手动配置webpack"><a class="header-anchor" href="#手动配置webpack">¶</a>手动配置webpack</h2>
+<ul>
+<li>默认配置文件的名字 webpack.config.js</li>
+<li>运行时可手动指定配置文件 <code>npx webpack --config webpack.config.my.js</code></li>
+<li>可以在<code>package.json</code>里面配置脚本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;build&quot;: &quot;webpack --config webpack.config.my.js&quot; &#x2F;&#x2F; 可以省略npx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="配置devServer-开发服务器配置"><a class="header-anchor" href="#配置devServer-开发服务器配置">¶</a>配置devServer (开发服务器配置)</h3>
+<ul>
+<li>安装<code>webpack-dev-server</code><br>
+<code>npm install webpack-dev-server -D</code></li>
+<li>在<code>package.json</code>中配置脚本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;dev&quot;: &quot;webpack serve --open&quot; &#x2F;&#x2F; 此处若是配置为 webpack webpack-dev-server --open 会报错</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>在<code>webpack.config.js</code>中配置<code>devServer</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    contentBase: &#39;.&#x2F;dist&#39;,</span><br><span class="line">    port: 8080, &#x2F;&#x2F; 此处不配置也行， 默认就是8080端口</span><br><span class="line">    progress: true, &#x2F;&#x2F; 配置启动进度条</span><br><span class="line">    compress: true &#x2F;&#x2F; 启用gzip压缩</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>运行<code>npm run dev</code> 或者 <code>webpack serve --open</code> 即可启动本地服务</li>
+</ul>
+<h3 id="添加html-webpack-plugin插件"><a class="header-anchor" href="#添加html-webpack-plugin插件">¶</a>添加html-webpack-plugin插件</h3>
+<ul>
+<li>安装<code>html-webpack-plugin</code>,因为我们用的是<code>webpack4</code>，所以我们安装<code>4.5.0</code>的插件就好<br>
+<code>npm install html-webpack-plugin@4.5.0 -D</code></li>
+<li><code>webpack.config.js</code>中的配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const htmlWebpackPlugin &#x3D; require(&#39;html-webpack-plugin&#39;)</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  plugins: [ &#x2F;&#x2F; 数组 放着所有的webpack插件</span><br><span class="line">    new htmlWebpackPlugin(&#123;</span><br><span class="line">      template: &#39;.&#x2F;src&#x2F;index.html&#39;,</span><br><span class="line">      filename: &#39;index.html&#39;,</span><br><span class="line">      minify: &#123;</span><br><span class="line">        removeAttributeQuotes: true, &#x2F;&#x2F; 删除属性的双引号</span><br><span class="line">        collapseWhitespace: true, &#x2F;&#x2F; 折叠空行</span><br><span class="line">      &#125;,</span><br><span class="line">      hash: true</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="配置style-loader、css-loader模块"><a class="header-anchor" href="#配置style-loader、css-loader模块">¶</a>配置<code>style-loader</code>、<code>css-loader</code>模块</h3>
+<ul>
+<li>安装loader<br>
+<code>npm install css-loader style-loader -D</code></li>
+<li>在模块里配置规则</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">module: &#123;</span><br><span class="line">  rules: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: &#x2F;\.css$&#x2F;, &#x2F;&#x2F; 匹配后缀名</span><br><span class="line">      use: [ &#x2F;&#x2F; 可用字符串写法、数组写法、对象写法</span><br><span class="line">        &#123;</span><br><span class="line">          loader: &#39;style-loader&#39;,</span><br><span class="line">          options: &#123;</span><br><span class="line">            insert: &#39;top&#39; &#x2F;&#x2F; 样式插入的位置， top 引入链接在最顶部</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#39;css-loader&#39;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="打包抽离css文件"><a class="header-anchor" href="#打包抽离css文件">¶</a>打包抽离css文件</h3>
+<ul>
+<li>安装插件<code>mini-css-extract-plugin</code><br>
+<code>npm install mini-css-extract-plugin -D</code></li>
+<li>配置文件头部引入插件<br>
+<code>const miniCssExtractPlugin = require('mini-css-extract-plugin')</code></li>
+<li>将插件放入plugins里面，然后在loader中使用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    new miniCssExtractPlugin(&#123;</span><br><span class="line">      filename: &#39;main.css&#39; &#x2F;&#x2F; 打包抽离出来的文件名</span><br><span class="line">    &#125;)</span><br><span class="line">  ],</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: &#x2F;\.css$&#x2F;,</span><br><span class="line">        use: [</span><br><span class="line">          miniCssExtractPlugin.loader, &#x2F;&#x2F; 使用插件 ，将转译完的css用插件处理生成link插入</span><br><span class="line">          &#39;css-loader&#39;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>自动添加样式前缀<br>
+<code>npm install postcss-loader autoprefixer -D</code></li>
+<li>在<code>webpack.config.js</code>中配置<code>module</code>的规则</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: &#x2F;\.css$&#x2F;,</span><br><span class="line">        use: [</span><br><span class="line">          miniCssExtractPlugin.loader,</span><br><span class="line">          &#39;css-loader&#39;,</span><br><span class="line">          &#39;postcss-loader&#39; &#x2F;&#x2F; 需放在css-loader后面</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后在根目录创建<code>postcss.config.js</code>配置文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; postcss.config.js</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    require(&#39;autoprefixer&#39;)(&#123;</span><br><span class="line">      &quot;overrideBrowserslist&quot;: [</span><br><span class="line">        &quot;defaults&quot;,</span><br><span class="line">        &quot;not ie &lt; 11&quot;,</span><br><span class="line">        &quot;last 2 versions&quot;,</span><br><span class="line">        &quot;&gt; 1%&quot;,</span><br><span class="line">        &quot;iOS 7&quot;,</span><br><span class="line">        &quot;last 3 iOS versions&quot;</span><br><span class="line">      ]</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>运行<code>npm run build</code>即可看到打包完的文件中带有各浏览器前缀</p>
+</li>
+<li>
+<p>这时，我们发现css文件没有压缩，所以接下来我们要压缩一下css文件，先安装<code>optimize-css-assets-webpack-plugin</code>插件<br>
+<code>npm install optimize-css-assets-webpack-plugin -D</code></p>
+</li>
+<li>
+<p>在<code>webpack.config.js</code>配置文件中新增<code>optimization</code>优化项, 需要在<code>production</code>模式下才生效</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const optimizeCss &#x3D; require(&#39;optimize-css-assets-webpack-plugin&#39;)</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  optimization: &#123;</span><br><span class="line">    minimizer: [</span><br><span class="line">      new optimizeCss()</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>打包完之后发现，css确实是压缩了，但是js却没有压缩，所以接下来我们需要安装<code>uglifyjs-webpack-plugin</code>插件<br>
+<code>npm install uglifyjs-webpack-plugin -D</code></li>
+<li>使用插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const optimizeCss &#x3D; require(&#39;optimize-css-assets-webpack-plugin&#39;)</span><br><span class="line">const uglifyjsPlugin &#x3D; require(&#39;uglifyjs-webpack-plugin&#39;)</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  optimization: &#123;</span><br><span class="line">    minimizer: [</span><br><span class="line">      new uglifyjsPlugin(&#123;</span><br><span class="line">        cache: true, &#x2F;&#x2F;是否缓存</span><br><span class="line">        parallel: true, &#x2F;&#x2F;并发压缩</span><br><span class="line">        sourceMap: true</span><br><span class="line">      &#125;),</span><br><span class="line">      new optimizeCss()</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>紧接着发现ES6语法好像没有转化，所以安装<code>babel</code>来转换一下<br>
+<code>npm isntall babel-loader @babel/core @babel/preset-env @babel/plugin-proposal-class-properties @babel/plugin-proposal-decorators -D</code></li>
+<li>在<code>rules</code>中配置一下, 如果要看转化效果，可以使用开发模式更为直观一点(没有压缩代码)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: &#x2F;\.js$&#x2F;,</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: &#39;babel-loader&#39;,</span><br><span class="line">          options: &#123; &#x2F;&#x2F; 用babel-loader 需要将es6转成es5</span><br><span class="line">            presets: [</span><br><span class="line">              &#39;@babel&#x2F;preset-env&#39;</span><br><span class="line">            ],</span><br><span class="line">            plugins: [</span><br><span class="line">              [&#39;@babel&#x2F;plugin-proposal-decorators&#39;, &#123; &#39;legacy&#39;: true &#125;],</span><br><span class="line">              [&#39;@babel&#x2F;plugin-proposal-class-properties&#39;, &#123; &#39;loose&#39;: true &#125;]</span><br><span class="line">            ]</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/jekyll_demo.io/2021/03/25/just-a-secret/" rel="prev" title="just a secret">
+      <i class="fa fa-chevron-left"></i> just a secret
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/jekyll_demo.io/2021/04/02/webpack4-0%E9%85%8D%E7%BD%AE%E6%97%B6%E7%A2%B0%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/" rel="next" title="webpack4.0配置时碰到的一些问题">
+      webpack4.0配置时碰到的一些问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#webpcak%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">webpcak安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack%E5%8F%AF%E4%BB%A5%E8%BF%9B%E8%A1%8C0%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">webpack可以进行0配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AEwebpack"><span class="nav-number">3.</span> <span class="nav-text">手动配置webpack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEdevServer-%E5%BC%80%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">配置devServer (开发服务器配置)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0html-webpack-plugin%E6%8F%92%E4%BB%B6"><span class="nav-number">3.2.</span> <span class="nav-text">添加html-webpack-plugin插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEstyle-loader%E3%80%81css-loader%E6%A8%A1%E5%9D%97"><span class="nav-number">3.3.</span> <span class="nav-text">配置style-loader、css-loader模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E6%8A%BD%E7%A6%BBcss%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">打包抽离css文件</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="阿光"
+      src="/jekyll_demo.io/images/ag_avatar.jpg">
+  <p class="site-author-name" itemprop="name">阿光</p>
+  <div class="site-description" itemprop="description">选择有时候比努力更重要</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/jekyll_demo.io/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021-03 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿光</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/jekyll_demo.io/lib/anime.min.js"></script>
+  <script src="/jekyll_demo.io/lib/velocity/velocity.min.js"></script>
+  <script src="/jekyll_demo.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/jekyll_demo.io/js/utils.js"></script>
+
+<script src="/jekyll_demo.io/js/motion.js"></script>
+
+
+<script src="/jekyll_demo.io/js/schemes/pisces.js"></script>
+
+
+<script src="/jekyll_demo.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

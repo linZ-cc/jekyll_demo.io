@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"linz-cc.github.io","root":"/jekyll_demo.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. ¶Quic">
+  <meta name="description" content="¶配置webpack-dev-server后 运行报错  配置版本 webpack 4.46.0 webpack-cli 4.6.0 webpack-dev-server 3.11.2 当配置webpack-dev-server时，运行npx webpack-dev-server会出现Cannot find module &#39;webpack-cli&#x2F;bin&#x2F;config-yargs&#39;错误 解决方法：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://linz-cc.github.io/jekyll_demo.io/2021/03/25/hello-world/index.html">
+<meta property="og:title" content="webpack4.0配置时碰到的一些问题">
+<meta property="og:url" content="https://linz-cc.github.io/jekyll_demo.io/2021/04/02/webpack4-0%E9%85%8D%E7%BD%AE%E6%97%B6%E7%A2%B0%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="阿光的小店">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. ¶Quic">
+<meta property="og:description" content="¶配置webpack-dev-server后 运行报错  配置版本 webpack 4.46.0 webpack-cli 4.6.0 webpack-dev-server 3.11.2 当配置webpack-dev-server时，运行npx webpack-dev-server会出现Cannot find module &#39;webpack-cli&#x2F;bin&#x2F;config-yargs&#39;错误 解决方法：">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-25T07:52:35.729Z">
-<meta property="article:modified_time" content="2021-03-25T07:52:35.729Z">
+<meta property="article:published_time" content="2021-04-02T07:04:30.000Z">
+<meta property="article:modified_time" content="2021-04-02T08:35:14.282Z">
 <meta property="article:author" content="阿光">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://linz-cc.github.io/jekyll_demo.io/2021/03/25/hello-world/">
+<link rel="canonical" href="https://linz-cc.github.io/jekyll_demo.io/2021/04/02/webpack4-0%E9%85%8D%E7%BD%AE%E6%97%B6%E7%A2%B0%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>Hello World | 阿光的小店</title>
+  <title>webpack4.0配置时碰到的一些问题 | 阿光的小店</title>
   
 
 
@@ -150,7 +150,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://linz-cc.github.io/jekyll_demo.io/2021/03/25/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://linz-cc.github.io/jekyll_demo.io/2021/04/02/webpack4-0%E9%85%8D%E7%BD%AE%E6%97%B6%E7%A2%B0%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/jekyll_demo.io/images/ag_avatar.jpg">
@@ -163,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          webpack4.0配置时碰到的一些问题
         </h1>
 
         <div class="post-meta">
@@ -172,8 +172,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-03-25 15:52:35" itemprop="dateCreated datePublished" datetime="2021-03-25T15:52:35+08:00">2021-03-25</time>
+              <time title="创建时间：2021-04-02 15:04:30 / 修改时间：16:35:14" itemprop="dateCreated datePublished" datetime="2021-04-02T15:04:30+08:00">2021-04-02</time>
             </span>
 
           
@@ -187,20 +188,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a class="header-anchor" href="#Quick-Start">¶</a>Quick Start</h2>
-<h3 id="Create-a-new-post"><a class="header-anchor" href="#Create-a-new-post">¶</a>Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a class="header-anchor" href="#Run-server">¶</a>Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a class="header-anchor" href="#Generate-static-files">¶</a>Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a class="header-anchor" href="#Deploy-to-remote-sites">¶</a>Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <h2 id="配置webpack-dev-server后-运行报错"><a class="header-anchor" href="#配置webpack-dev-server后-运行报错">¶</a>配置webpack-dev-server后 运行报错</h2>
+<ul>
+<li>配置版本<br>
+<code>webpack 4.46.0</code><br>
+<code>webpack-cli 4.6.0</code><br>
+<code>webpack-dev-server 3.11.2</code></li>
+<li>当配置<code>webpack-dev-server</code>时，运行<code>npx webpack-dev-server</code>会出现<code>Cannot find module 'webpack-cli/bin/config-yargs'</code>错误</li>
+<li>解决方法：
+<ol>
+<li>在<code>webpack.config.js</code>中配置<code>devServer</code>, 如下所示：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    contentBase: &#39;.&#x2F;dist&#39;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在package.json中配置脚本, 然后运行<code>npm run dev</code>即可，或者使用<code>webpack serve --open</code>也可。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;dev&quot;: &quot;webpack serve --open&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="DevTools-failed-to-parse-SourceMap"><a class="header-anchor" href="#DevTools-failed-to-parse-SourceMap">¶</a>DevTools failed to parse SourceMap</h2>
+<ul>
+<li>
+<p>使用webpack-dev-server开发时，浏览器控制台会报一个警告：<code>DevTools failed to load SourceMap: Could not load content for webpack:///node_modules/sockjs-client/dist/sockjs.js.map: HTTP error: status code 404, net::ERR_UNKNOWN_URL_SCHEME</code></p>
+</li>
+<li>
+<p>SourceMap技术<br>
+<code>SourceMap</code>本质上是一个信息文件，里面存储这代码转换前后的对应位置，是源码和生产代码的映射。<code>SourceMap</code>解决了在打包过程中，代码经过压缩，去空格以及<code>babel</code>编译转化后，由于代码之间代码差异过大，造成无法<code>debug</code>的问题。<code>SourceMap</code>在代码处理前与处理后之间构建了一座桥梁，方便定位生产环境中出现的<code>bug</code>位置。</p>
+</li>
+<li>
+<p>解决方法：<br>
+在<code>webpcak.config.js</code>中配置<code>devtool: 'source-map</code>即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  devtool: &#39;source-map&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="安装html-webpack-plugin配置报错-TypeError-Cannot-read-property-tap-of-undefined"><a class="header-anchor" href="#安装html-webpack-plugin配置报错-TypeError-Cannot-read-property-tap-of-undefined">¶</a>安装html-webpack-plugin配置报错 <code>TypeError: Cannot read property 'tap' of undefined</code></h2>
+<ul>
+<li>开始使用<code>npm install html-webpack-plugin -D</code>安装完插件后，在<code>webpack.config.js</code>中配置完<code>plugins</code>后运行报错</li>
+<li>在网上找了圈问题，发现是版本兼容问题,看了下安装的版本是<code>^5.3.1</code>的，而我们现在使用的<code>webpack</code>是<code>^4.46.0</code>的，所以降了下<code>html-webpack-plugin</code>的版本为<code>^4.5.0</code>解决</li>
+</ul>
+</li>
+</ul>
 
     </div>
 
@@ -215,10 +240,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/jekyll_demo.io/2021/03/25/just-a-secret/" rel="next" title="just a secret">
-      just a secret <i class="fa fa-chevron-right"></i>
+    <a href="/jekyll_demo.io/2021/04/02/webpack5%E4%BB%8E%E5%A4%B4%E5%BC%80%E5%A7%8B/" rel="prev" title="webpack5从头开始">
+      <i class="fa fa-chevron-left"></i> webpack5从头开始
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/jekyll_demo.io/2021/04/08/some-questions-and-answers/" rel="next" title="some-questions-and-answers">
+      some-questions-and-answers <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -278,7 +306,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEwebpack-dev-server%E5%90%8E-%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99"><span class="nav-number">1.</span> <span class="nav-text">配置webpack-dev-server后 运行报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DevTools-failed-to-parse-SourceMap"><span class="nav-number">2.</span> <span class="nav-text">DevTools failed to parse SourceMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85html-webpack-plugin%E9%85%8D%E7%BD%AE%E6%8A%A5%E9%94%99-TypeError-Cannot-read-property-tap-of-undefined"><span class="nav-number">3.</span> <span class="nav-text">安装html-webpack-plugin配置报错 TypeError: Cannot read property &#39;tap&#39; of undefined</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
