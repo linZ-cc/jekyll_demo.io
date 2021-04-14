@@ -178,7 +178,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-14 17:50:44" itemprop="dateModified" datetime="2021-04-14T17:50:44+08:00">2021-04-14</time>
+                <time title="修改时间：2021-04-14 17:53:34" itemprop="dateModified" datetime="2021-04-14T17:53:34+08:00">2021-04-14</time>
               </span>
 
           
@@ -192,7 +192,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="先升级webpack3到webpack4"><a class="header-anchor" href="#先升级webpack3到webpack4">¶</a>先升级webpack3到webpack4</h2>
+          <h3 id="先升级webpack3到webpack4"><a class="header-anchor" href="#先升级webpack3到webpack4">¶</a>先升级webpack3到webpack4</h3>
 <ul>
 <li>将<code>webpack3</code>和<code>webpack-dev-server</code>卸载<br>
 <code>npm uninstall webpack webpack-dev-server</code></li>
@@ -205,42 +205,42 @@
 <li><code>webpack4</code>新增<code>mode</code>属性配置，需要配置该属性，不然将报警告<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  mode: &#39;development&#39; &#x2F;&#x2F; development production none</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="运行npm-run-dev发现报错TypeError-compilation-mainTemplate-applyPluginsWaterfall-is-not-a-function"><a class="header-anchor" href="#运行npm-run-dev发现报错TypeError-compilation-mainTemplate-applyPluginsWaterfall-is-not-a-function">¶</a>运行<code>npm run dev</code>发现报错<code>TypeError: compilation.mainTemplate.applyPluginsWaterfall is not a function</code></h2>
+<h3 id="运行npm-run-dev发现报错TypeError-compilation-mainTemplate-applyPluginsWaterfall-is-not-a-function"><a class="header-anchor" href="#运行npm-run-dev发现报错TypeError-compilation-mainTemplate-applyPluginsWaterfall-is-not-a-function">¶</a>运行<code>npm run dev</code>发现报错<code>TypeError: compilation.mainTemplate.applyPluginsWaterfall is not a function</code></h3>
 <ul>
 <li>原来<code>html-webpack-plugin</code>版本与<code>webpack4</code>不兼容，升级<code>html-webpack-plugin</code><br>
 <code>npm uninstall html-webpack-plugin</code><br>
 <code>npm install html-webpack-plugin@4.5.0 -D</code></li>
 </ul>
-<h2 id="紧接着运行发现报错Cannot-read-property-eslint-of-undefined-at-Object-module-exports-C-Users-ASUS-Desktop-web-admin-node-modules-eslint-loader-index-js-148-18"><a class="header-anchor" href="#紧接着运行发现报错Cannot-read-property-eslint-of-undefined-at-Object-module-exports-C-Users-ASUS-Desktop-web-admin-node-modules-eslint-loader-index-js-148-18">¶</a>紧接着运行发现报错<code>Cannot read property 'eslint' of undefined at Object.module.exports (C:\Users\ASUS\Desktop\web-admin\node_modules\eslint-loader\index.js:148:18)</code></h2>
+<h3 id="紧接着运行发现报错Cannot-read-property-eslint-of-undefined-at-Object-module-exports-C-Users-ASUS-Desktop-web-admin-node-modules-eslint-loader-index-js-148-18"><a class="header-anchor" href="#紧接着运行发现报错Cannot-read-property-eslint-of-undefined-at-Object-module-exports-C-Users-ASUS-Desktop-web-admin-node-modules-eslint-loader-index-js-148-18">¶</a>紧接着运行发现报错<code>Cannot read property 'eslint' of undefined at Object.module.exports (C:\Users\ASUS\Desktop\web-admin\node_modules\eslint-loader\index.js:148:18)</code></h3>
 <ul>
 <li>发现是<code>eslint-loader</code>与<code>webpack4</code>不兼容，安装新的<code>eslint-loader</code><br>
 <code>npm uninstall eslint-loader</code><br>
 <code>npm install eslint-loader@2.1.2 -D</code></li>
 </ul>
-<h2 id="接着遇到了vue的相关的报错TypeError-Cannot-read-property-vue-of-undefined-at-Object-module-exports-C-Users-ASUS-Desktop-web-admin-node-modules-vue-loader-lib-loader-js-57-18"><a class="header-anchor" href="#接着遇到了vue的相关的报错TypeError-Cannot-read-property-vue-of-undefined-at-Object-module-exports-C-Users-ASUS-Desktop-web-admin-node-modules-vue-loader-lib-loader-js-57-18">¶</a>接着遇到了<code>vue</code>的相关的报错<code>TypeError: Cannot read property 'vue' of undefined at Object.module.exports (C:\Users\ASUS\Desktop\web-admin\node_modules\vue-loader\lib\loader.js:57:18)</code></h2>
+<h3 id="接着遇到了vue的相关的报错TypeError-Cannot-read-property-vue-of-undefined-at-Object-module-exports-C-Users-ASUS-Desktop-web-admin-node-modules-vue-loader-lib-loader-js-57-18"><a class="header-anchor" href="#接着遇到了vue的相关的报错TypeError-Cannot-read-property-vue-of-undefined-at-Object-module-exports-C-Users-ASUS-Desktop-web-admin-node-modules-vue-loader-lib-loader-js-57-18">¶</a>接着遇到了<code>vue</code>的相关的报错<code>TypeError: Cannot read property 'vue' of undefined at Object.module.exports (C:\Users\ASUS\Desktop\web-admin\node_modules\vue-loader\lib\loader.js:57:18)</code></h3>
 <ul>
 <li>查了下发现是<code>webpack4</code>需要升级<code>vue-loader@13.5.0</code>为<code>vue-loader@14.2.2</code><br>
 <code>npm uninstall vue-loader</code><br>
 <code>npm install vue-loader@14.2.4 -D</code></li>
 </ul>
-<h2 id="遇到项目运行内存溢出Last-few-GCs-JavaScript-heap-out-of-memory"><a class="header-anchor" href="#遇到项目运行内存溢出Last-few-GCs-JavaScript-heap-out-of-memory">¶</a>遇到项目运行内存溢出<code>Last few GCs JavaScript heap out of memory</code></h2>
+<h3 id="遇到项目运行内存溢出Last-few-GCs-JavaScript-heap-out-of-memory"><a class="header-anchor" href="#遇到项目运行内存溢出Last-few-GCs-JavaScript-heap-out-of-memory">¶</a>遇到项目运行内存溢出<code>Last few GCs JavaScript heap out of memory</code></h3>
 <ul>
 <li>在终端执行<code>set NODE_OPTIONS=--max_old_space_size=8172</code>解决</li>
 </ul>
-<h2 id="又遇到了一些loader需要更新，现安装最新版本，分别为url-loader-4-1-1、file-loader-6-2-0、svg-sprite-loader-6-0-5"><a class="header-anchor" href="#又遇到了一些loader需要更新，现安装最新版本，分别为url-loader-4-1-1、file-loader-6-2-0、svg-sprite-loader-6-0-5">¶</a>又遇到了一些<code>loader</code>需要更新，现安装最新版本，分别为<code>url-loader@4.1.1</code>、<code>file-loader@6.2.0</code>、<code>svg-sprite-loader@6.0.5</code></h2>
+<h3 id="又遇到了一些loader需要更新，现安装最新版本，分别为url-loader-4-1-1、file-loader-6-2-0、svg-sprite-loader-6-0-5"><a class="header-anchor" href="#又遇到了一些loader需要更新，现安装最新版本，分别为url-loader-4-1-1、file-loader-6-2-0、svg-sprite-loader-6-0-5">¶</a>又遇到了一些<code>loader</code>需要更新，现安装最新版本，分别为<code>url-loader@4.1.1</code>、<code>file-loader@6.2.0</code>、<code>svg-sprite-loader@6.0.5</code></h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall url-loader file-loader svg-sprite-loader -D</span><br></pre></td></tr></table></figure>
-<h2 id="运行npm-run-dev运行成功，但是页面空白，查看控制台发现Module-node-modules-webpack-dev-server-client-clients-BaseClient-js"><a class="header-anchor" href="#运行npm-run-dev运行成功，但是页面空白，查看控制台发现Module-node-modules-webpack-dev-server-client-clients-BaseClient-js">¶</a>运行<code>npm run dev</code>运行成功，但是页面空白，查看控制台发现<code>Module../node_modules/webpack-dev-server/client/clients/BaseClient.js</code></h2>
+<h3 id="运行npm-run-dev运行成功，但是页面空白，查看控制台发现Module-node-modules-webpack-dev-server-client-clients-BaseClient-js"><a class="header-anchor" href="#运行npm-run-dev运行成功，但是页面空白，查看控制台发现Module-node-modules-webpack-dev-server-client-clients-BaseClient-js">¶</a>运行<code>npm run dev</code>运行成功，但是页面空白，查看控制台发现<code>Module../node_modules/webpack-dev-server/client/clients/BaseClient.js</code></h3>
 <ul>
 <li>搜了一圈后发现注释掉<code>webapck</code>配置文件中的<code>rules</code>的<code>resolve('node_modules/webpack-dev-server/client')</code>就可以</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">module: &#123;</span><br><span class="line">  rules: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: &#x2F;\.js$&#x2F;,</span><br><span class="line">      loader: &#39;babel-loader?cacheDirectory&#39;,</span><br><span class="line">      &#x2F;&#x2F; include: [resolve(&#39;src&#39;), resolve(&#39;test&#39;), resolve(&#39;node_modules&#x2F;webpack-dev-server&#x2F;client&#39;)]</span><br><span class="line">      include: [resolve(&#39;src&#39;), resolve(&#39;test&#39;)]</span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="接着想生产环境打个包试试，发现报错webpack-optimize-CommonsChunkPlugin-has-been-removed-please-use-config-optimization-splitChunks-instead"><a class="header-anchor" href="#接着想生产环境打个包试试，发现报错webpack-optimize-CommonsChunkPlugin-has-been-removed-please-use-config-optimization-splitChunks-instead">¶</a>接着想生产环境打个包试试，发现报错<code>webpack.optimize.CommonsChunkPlugin has been removed, please use config.optimization.splitChunks instead</code></h2>
+<h3 id="接着想生产环境打个包试试，发现报错webpack-optimize-CommonsChunkPlugin-has-been-removed-please-use-config-optimization-splitChunks-instead"><a class="header-anchor" href="#接着想生产环境打个包试试，发现报错webpack-optimize-CommonsChunkPlugin-has-been-removed-please-use-config-optimization-splitChunks-instead">¶</a>接着想生产环境打个包试试，发现报错<code>webpack.optimize.CommonsChunkPlugin has been removed, please use config.optimization.splitChunks instead</code></h3>
 <ul>
 <li><code>webpack4</code>已经移除了<code>CommonsChunkPlugin</code>,新增了<code>optimization</code>,于是先简单配置下<code>optimization</code><br>
 将原有配置<code>CommonsChunkPlugin</code>的配置项先注释,然后新增<code>optimization</code>配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">module.export &#x3D; &#123;</span><br><span class="line">  optimization: &#123;</span><br><span class="line">    splitChunks: &#123;</span><br><span class="line">      chunks: &#39;all&#39;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="然后运行继续报错Error-Chunk-entrypoints-Use-Chunks-groupsIterable-and-filter-by-instanceof-Entrypoint-instead"><a class="header-anchor" href="#然后运行继续报错Error-Chunk-entrypoints-Use-Chunks-groupsIterable-and-filter-by-instanceof-Entrypoint-instead">¶</a>然后运行继续报错<code>Error: Chunk.entrypoints: Use Chunks.groupsIterable and filter by instanceof Entrypoint instead</code></h2>
+<h3 id="然后运行继续报错Error-Chunk-entrypoints-Use-Chunks-groupsIterable-and-filter-by-instanceof-Entrypoint-instead"><a class="header-anchor" href="#然后运行继续报错Error-Chunk-entrypoints-Use-Chunks-groupsIterable-and-filter-by-instanceof-Entrypoint-instead">¶</a>然后运行继续报错<code>Error: Chunk.entrypoints: Use Chunks.groupsIterable and filter by instanceof Entrypoint instead</code></h3>
 <ul>
 <li>此处好像是<code>extract-text-webpack-plugin</code>与<code>webpack4</code>版本不兼容，使用<code>mini-css-extract-plugin</code><br>
 <code>npm install mini-css-extract-plugin -D</code></li>
@@ -251,24 +251,24 @@
 <li>在<code>webpack.prod.conf.js</code>中配置</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const MiniCssExtractPlugin &#x3D; require(&#39;mini-css-extract-plugin&#39;)</span><br><span class="line">...</span><br><span class="line">plugins: [</span><br><span class="line">  new MiniCssExtractPlugin(&#123;</span><br><span class="line">    filename: utils.assetsPath(&#39;css&#x2F;[name].[contenthash].css&#39;),</span><br><span class="line">    ignoreOrder: true</span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h2 id="运行npm-run-build-prod后报错Unhandled-rejection-Error-dependency-is-not-a-valid-chunk-sort-mode"><a class="header-anchor" href="#运行npm-run-build-prod后报错Unhandled-rejection-Error-dependency-is-not-a-valid-chunk-sort-mode">¶</a>运行<code>npm run build:prod</code>后报错<code>Unhandled rejection Error: &quot;dependency&quot; is not a valid chunk sort mode</code></h2>
+<h3 id="运行npm-run-build-prod后报错Unhandled-rejection-Error-dependency-is-not-a-valid-chunk-sort-mode"><a class="header-anchor" href="#运行npm-run-build-prod后报错Unhandled-rejection-Error-dependency-is-not-a-valid-chunk-sort-mode">¶</a>运行<code>npm run build:prod</code>后报错<code>Unhandled rejection Error: &quot;dependency&quot; is not a valid chunk sort mode</code></h3>
 <ul>
 <li>在<code>html-webpack-plugin</code>插件配置中将<code>chunksSortMode: 'dependency'</code>改为<code>chunksSortMode: 'auto'</code></li>
 </ul>
-<h2 id="紧接着运行发现提示了另一个错误TypeError-compilation-contextDependencies-push-is-not-a-function-看上面的提示为-C-Users-ASUS-Desktop-web-admin-webpack4-node-modules-copy-webpack-plugin-dist-index-js-151"><a class="header-anchor" href="#紧接着运行发现提示了另一个错误TypeError-compilation-contextDependencies-push-is-not-a-function-看上面的提示为-C-Users-ASUS-Desktop-web-admin-webpack4-node-modules-copy-webpack-plugin-dist-index-js-151">¶</a>紧接着运行发现提示了另一个错误<code>TypeError: compilation.contextDependencies.push is not a function</code>,看上面的提示为<code>.C:\Users\ASUS\Desktop\web-admin-webpack4\node_modules\copy-webpack-plugin\dist\index.js:151</code></h2>
+<h3 id="紧接着运行发现提示了另一个错误TypeError-compilation-contextDependencies-push-is-not-a-function-看上面的提示为-C-Users-ASUS-Desktop-web-admin-webpack4-node-modules-copy-webpack-plugin-dist-index-js-151"><a class="header-anchor" href="#紧接着运行发现提示了另一个错误TypeError-compilation-contextDependencies-push-is-not-a-function-看上面的提示为-C-Users-ASUS-Desktop-web-admin-webpack4-node-modules-copy-webpack-plugin-dist-index-js-151">¶</a>紧接着运行发现提示了另一个错误<code>TypeError: compilation.contextDependencies.push is not a function</code>,看上面的提示为<code>.C:\Users\ASUS\Desktop\web-admin-webpack4\node_modules\copy-webpack-plugin\dist\index.js:151</code></h3>
 <ul>
 <li>我们发现是<code>copy-webpack-plugin的问题,将它升级一下 </code>npm install copy-webpack-plugin@6.4.1 -D`</li>
 <li>在<code>webpack.prod.conf.js</code>中引入并使用</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; webpack.prod.conf.js</span><br><span class="line">const CopyWebpackPlugin &#x3D; require(&#39;copy-webpack-plugin&#39;)</span><br><span class="line">...</span><br><span class="line">plugins: [</span><br><span class="line">  new CopyWebpackPlugin(</span><br><span class="line">    &#123;</span><br><span class="line">      patterns: [</span><br><span class="line">        &#123; from: path.resolve(__dirname, &#39;..&#x2F;static&#39;), to: config.build.assetsSubDirectory &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h2 id="打包问题解决，回到运行dev试一下，发现菜单栏小logo没出现"><a class="header-anchor" href="#打包问题解决，回到运行dev试一下，发现菜单栏小logo没出现">¶</a>打包问题解决，回到运行<code>dev</code>试一下，发现菜单栏小logo没出现</h2>
+<h3 id="打包问题解决，回到运行dev试一下，发现菜单栏小logo没出现"><a class="header-anchor" href="#打包问题解决，回到运行dev试一下，发现菜单栏小logo没出现">¶</a>打包问题解决，回到运行<code>dev</code>试一下，发现菜单栏小logo没出现</h3>
 <ul>
 <li>我以为是<code>sass</code>版本问题，于是把<code>node-sass sass-loader</code>都升级了下发现并没有解决</li>
 <li>于是我又把<code>css-loader</code>升级到<code>^4.3.0</code>，发现页面样式乱了…</li>
 <li>然后也没有提示什么错误，看了下<code>vue-style-loader</code>好像没有升级，于是升级到<code>^4.1.3</code>，前面的问题全部解决</li>
 <li>顺便把<code>less less-loader</code>更新一下</li>
 </ul>
-<h2 id="最后将此次升级的各个依赖清单列一下"><a class="header-anchor" href="#最后将此次升级的各个依赖清单列一下">¶</a>最后将此次升级的各个依赖清单列一下</h2>
+<h3 id="最后将此次升级的各个依赖清单列一下"><a class="header-anchor" href="#最后将此次升级的各个依赖清单列一下">¶</a>最后将此次升级的各个依赖清单列一下</h3>
 <table>
 <thead>
 <tr>
